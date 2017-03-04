@@ -1,6 +1,7 @@
 package com.cauealmeida.androidfinal;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.animation.Animation;
@@ -21,16 +22,14 @@ public class SplashActivity extends AppCompatActivity {
         animation = AnimationUtils.loadAnimation(getApplicationContext(),
                 R.anim.fadein);
         image.startAnimation(animation);
-        animation.setAnimationListener(new Animation.AnimationListener(){
+        animation.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
-
             }
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                startActivity(intent);
+                redirectUser();
             }
 
             @Override
@@ -38,5 +37,26 @@ public class SplashActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    /**
+     * Verifica se o usuário já logou para que seja automaticamente
+     * redirecionado para a tela principal. Do contrário, terá de fazer login.
+     */
+
+    private void redirectUser() {
+        SharedPreferences settings = getSharedPreferences("PREFERENCES", MODE_PRIVATE);
+
+        if (settings.getBoolean("keepSession", false)) {
+            openScreen();
+        } else {
+            Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+            startActivity(intent);
+        }
+    }
+
+    public void openScreen() {
+        startActivity(new Intent(this, MainActivity.class));
+        finish(); // Destroy SplashScreen View
     }
 }
