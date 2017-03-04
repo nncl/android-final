@@ -67,9 +67,9 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     public void createDatabase() {
-        Log.i("Info", "Animação finalizada. Vamos criar o banco de dados");
-        SQLiteDatabase db;
-        db = openOrCreateDatabase("Users", SQLiteDatabase.CREATE_IF_NECESSARY, null);
+        Log.i("Info", "Animação finalizada. Vamos criar o banco de dados caso não exista");
+
+        SQLiteDatabase db = openOrCreateDatabase("users.db", SQLiteDatabase.CREATE_IF_NECESSARY, null);
 
         final String CREATE_TABLE_CONTAIN = "CREATE TABLE IF NOT EXISTS TAB_USERS ("
                 + "ID INTEGER primary key AUTOINCREMENT,"

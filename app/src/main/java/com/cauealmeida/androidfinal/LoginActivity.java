@@ -1,5 +1,6 @@
 package com.cauealmeida.androidfinal;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -11,12 +12,13 @@ import android.widget.EditText;
 
 public class LoginActivity extends AppCompatActivity {
 
+    SQLiteDatabase database;
+    Cursor cursor;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
-        // TODO test: list users from db
     }
 
     public void doSignIn(View v) {
@@ -46,5 +48,20 @@ public class LoginActivity extends AppCompatActivity {
         editor.putString("username", username);
         editor.putBoolean("keepSession", keepSession);
         editor.commit();
+    }
+
+    public void getData() {
+        Log.i("Info", "Vamos buscar os usuários");
+
+        try {
+            database = openOrCreateDatabase("users.db", Context.MODE_PRIVATE, null);
+            cursor = database.rawQuery("SELECT * FROM TAB_USERS", null);
+
+            Log.i("Info", "Temos a query");
+            Log.i("Info", String.valueOf(cursor.getCount()));
+
+        } catch (Exception e) {
+            Log.e("Error", "Erro ao buscar usuários: " + e);
+        }
     }
 }
