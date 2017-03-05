@@ -59,8 +59,10 @@ public class SplashActivity extends AppCompatActivity {
         SharedPreferences settings = getSharedPreferences("PREFERENCES", MODE_PRIVATE);
 
         if (settings.getBoolean("keepSession", false)) {
+            Log.i("Info", "Usuário já entrou uma vez, vamos redirecioná-lo");
             openScreen();
         } else {
+            Log.i("Info", "Usuário precisa logar");
             Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
             startActivity(intent);
         }

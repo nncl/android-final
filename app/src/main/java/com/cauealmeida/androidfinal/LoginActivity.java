@@ -1,6 +1,7 @@
 package com.cauealmeida.androidfinal;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -34,20 +35,26 @@ public class LoginActivity extends AppCompatActivity {
 
         Log.i("Info", "Temos usuário e senha. Vamos verificar acesso");
 
-        // TODO verify with SQLite database
-
         int hasUser = getData(username, password);
         Log.i("Info", String.valueOf(hasUser));
 
-        /*
+        if (hasUser > 0) {
+            savePreferences(username, true);
 
-        savePreferences(username, true);
-
-        SplashActivity splash = new SplashActivity();
-        splash.openScreen();
-
-        */
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        } else {
+            String error = "Usuário e/ou senha inválido(s)";
+            Log.e("Error", error);
+            Toast.makeText(this, error, Toast.LENGTH_SHORT).show();
+        }
     }
+
+    /**
+     * Salva a sessão do usuário
+     * @param username
+     * @param keepSession
+     */
 
     private void savePreferences(String username, Boolean keepSession) {
         SharedPreferences settings = getSharedPreferences("PREFERENCES",
