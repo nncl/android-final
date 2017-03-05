@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Android Final</string>
+    <string name="app_name">Android Awesome App</string>
     <string name="app_username">Username</string>
     <string name="app_password">Password</string>
     <string name="app_signin">Sign In</string>
