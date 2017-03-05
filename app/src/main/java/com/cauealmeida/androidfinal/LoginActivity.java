@@ -36,8 +36,8 @@ public class LoginActivity extends AppCompatActivity {
 
         // TODO verify with SQLite database
 
-        int test = getData(username, password);
-        Log.i("Info", String.valueOf(test));
+        int hasUser = getData(username, password);
+        Log.i("Info", String.valueOf(hasUser));
 
         /*
 
@@ -73,7 +73,9 @@ public class LoginActivity extends AppCompatActivity {
         try {
             int i = 0;
             database = openOrCreateDatabase("users.db", Context.MODE_PRIVATE, null);
-            cursor = database.rawQuery("SELECT * FROM TAB_USERS WHERE name=? and password=?", null);
+            cursor = database.rawQuery("SELECT * FROM TAB_USERS WHERE name=" + "\"" + username.trim() + "\"" + " and password=" + "\"" + password.trim() + "\"", null);
+//            c = db.rawQuery("select * from login_table where username =" + "\""+ username.trim() + "\""+" and password="+ "\""+ password.trim() + "\""+, null);
+
             Log.i("Info", "Temos a resposta da query");
 
             cursor.moveToFirst();
