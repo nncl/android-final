@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -33,10 +34,19 @@ public class LoginActivity extends AppCompatActivity {
 
         Log.i("Info", "Temos usuário e senha. Vamos verificar acesso");
 
+        // TODO verify with SQLite database
+
+        int test = getData(username, password);
+        Log.i("Info", String.valueOf(test));
+
+        /*
+
         savePreferences(username, true);
 
         SplashActivity splash = new SplashActivity();
         splash.openScreen();
+
+        */
     }
 
     private void savePreferences(String username, Boolean keepSession) {
@@ -50,18 +60,35 @@ public class LoginActivity extends AppCompatActivity {
         editor.commit();
     }
 
-    public void getData() {
-        Log.i("Info", "Vamos buscar os usuários");
+    /**
+     * Verifica se o usuário digitado está no banco de dados
+     *
+     * @param username
+     * @param password
+     */
+
+    public int getData(String username, String password) {
+        Log.i("Info", "Vamos buscar o usuário " + username);
 
         try {
+            int i = 0;
             database = openOrCreateDatabase("users.db", Context.MODE_PRIVATE, null);
-            cursor = database.rawQuery("SELECT * FROM TAB_USERS", null);
+            cursor = database.rawQuery("SELECT * FROM TAB_USERS WHERE name=? and password=?", null);
+            Log.i("Info", "Temos a resposta da query");
 
-            Log.i("Info", "Temos a query");
-            Log.i("Info", String.valueOf(cursor.getCount()));
+            cursor.moveToFirst();
+            i = cursor.getCount();
+            cursor.close();
+
+            return i;
 
         } catch (Exception e) {
-            Log.e("Error", "Erro ao buscar usuários: " + e);
+            Log.e("Error", "Erro ao buscar usuário: " + e);
+
+            Toast.makeText(this, "Erro ao encontrar usuário", Toast.LENGTH_SHORT)
+                    .show();
+
+            return 99;
         }
     }
 }
