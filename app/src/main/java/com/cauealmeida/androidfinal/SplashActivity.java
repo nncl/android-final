@@ -85,7 +85,7 @@ public class SplashActivity extends AppCompatActivity {
         Log.i("Info", "Vamos inserir um usuário");
 
         String sql =
-                "INSERT or replace INTO TAB_USERS (NAME, PASSWORD) VALUES('"+name+"', '123')";
+                "INSERT or replace INTO TAB_USERS (NAME, PASSWORD) VALUES('" + name + "', '" + password + "')";
         db.execSQL(sql);
 
         Log.i("Info", "Usuário inserido com sucesso");
