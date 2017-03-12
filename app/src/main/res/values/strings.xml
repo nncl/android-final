@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Super Heroes App</string>
+    <string name="app_name">Super Heróis App</string>
     <string name="app_username">Usuário</string>
     <string name="app_password">Senha</string>
     <string name="app_signin">Entrar</string>
@@ -8,7 +8,13 @@
     <string name="navigation_drawer_close">Fechar Navegação</string>
 
     <string name="action_settings">Configurações</string>
-    <string name="title_activity_main">Super Heroes</string>
+    <string name="title_activity_main">Super Heróis</string>
     <string name="navigation_signout">Sair</string>
     <string name="navigation_add">Inserir Novo Super Herói</string>
+    <string name="title_add">Vamos começar? Adicione um novo Super Herói</string>
+    <string name="title_brand">Super Brand, like Marvel...</string>
+    <string name="title_add_2">Adicionar</string>
+    <string name="app_description">Adicione e visualize seus Super Heróis e divirta-se!!</string>
+    <string name="app_welcome">Olá, Seja Bem-Vindo</string>
+    <string name="title_super_name">Super Name</string>
 </resources>
