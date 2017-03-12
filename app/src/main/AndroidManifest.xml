@@ -29,8 +29,9 @@
             android:label="@string/title_activity_main"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".SuperHeroActivity"></activity>
-        <activity android:name=".SuperHeroListActivity"></activity>
+        <activity android:name=".SuperHeroActivity" />
+        <activity android:name=".SuperHeroListActivity" />
+        <activity android:name=".AboutActivity"></activity>
     </application>
 
 </manifest>

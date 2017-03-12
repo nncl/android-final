@@ -91,6 +91,8 @@ public class MainActivity extends AppCompatActivity
             openPage("add");
         } else if (id == R.id.nav_list) {
             openPage("list");
+        } else if (id == R.id.nav_about) {
+            openPage("about");
         } else if (id == R.id.nav_signout) {
             openPage("signout");
         }
@@ -110,6 +112,10 @@ public class MainActivity extends AppCompatActivity
                 break;
             case "list":
                 i = new Intent(this, SuperHeroListActivity.class);
+                startActivity(i);
+                break;
+            case "about":
+                i = new Intent(this, AboutActivity.class);
                 startActivity(i);
                 break;
             case "signout":

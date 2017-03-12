@@ -11,6 +11,7 @@
     <string name="navigation_signout">Sair</string>
     <string name="navigation_add">Adicionar Novo Super Herói</string>
     <string name="navigation_list">Meus Super Heróis</string>
+    <string name="navigation_about">Sobre</string>
 
     <string name="action_settings">Configurações</string>
 
