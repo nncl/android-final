@@ -1,6 +1,7 @@
 package com.cauealmeida.androidfinal;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -108,7 +109,29 @@ public class MainActivity extends AppCompatActivity
             case "signout":
                 // TODO
                 Log.i("Info", "Let's get out of here");
+                removePreferences();
                 break;
         }
+    }
+
+    /**
+     * Remove a sessão do usuário do local storage
+     * Dessa forma, precisará logar novamente no app
+     * para que da próxima vez seja redirecionado automaticamente
+     * sem precisar logar.
+     */
+
+    private void removePreferences() {
+        SharedPreferences settings = getSharedPreferences("PREFERENCES",
+                MODE_PRIVATE);
+
+        SharedPreferences.Editor editor = settings.edit();
+
+        editor.remove("username");
+        editor.putBoolean("keepSession", false);
+        editor.commit();
+
+        Intent i = new Intent(this, LoginActivity.class);
+        startActivity(i);
     }
 }
