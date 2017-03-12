@@ -39,7 +39,6 @@ public class SplashActivity extends AppCompatActivity {
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                // TODO get user from API and insert this user into our DB
                 getUserFromAPI();
             }
 

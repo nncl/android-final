@@ -30,6 +30,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".SuperHeroActivity"></activity>
+        <activity android:name=".SuperHeroListActivity"></activity>
     </application>
 
 </manifest>
