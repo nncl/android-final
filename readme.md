@@ -30,3 +30,13 @@ Após o login, o usuário no precisa entrar mais com nome de usuário e senha.
 
 Para o app escolhi o tema de Super Heróis. Aqui queremos somente o nome do Super Herói e o brand de que foi criado.
 
+### Features
+
+- [x] Funcionalidade 1
+- [x] Funcionalidade 2
+- [x] Funcionalidade 3
+- [x] Funcionalidade 4
+- [ ] Funcionalidade 5
+- [ ] Funcionalidade 6
+- [x] Funcionalidade 7
+- [x] Considerações
