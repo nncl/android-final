@@ -12,7 +12,7 @@
     tools:context="com.cauealmeida.androidfinal.AboutActivity">
 
     <TextView
-        android:text="Versão 1.0.0"
+        android:text="@string/app_version"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView7"
@@ -21,7 +21,7 @@
         android:layout_centerHorizontal="true" />
 
     <TextView
-        android:text="www.cauealmeida.com"
+        android:text="@string/app_by_url"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView9"
@@ -30,7 +30,7 @@
         android:layout_centerHorizontal="true" />
 
     <TextView
-        android:text="Por Cauê Almeida"
+        android:text="@string/app_by"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView8"

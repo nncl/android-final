@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Super Heróis App</string>
+    <string name="app_username">Usuário</string>
+    <string name="app_password">Senha</string>
+    <string name="app_signin">Entrar</string>
+    <string name="app_description">Adicione e visualize seus Super Heróis e divirta-se!!</string>
+    <string name="app_welcome">Olá, Seja Bem-Vindo</string>
+
+    <string name="navigation_drawer_open">Abrir Navegação</string>
+    <string name="navigation_drawer_close">Fechar Navegação</string>
+    <string name="navigation_signout">Sair</string>
+    <string name="navigation_add">Adicionar Novo Super Herói</string>
+    <string name="navigation_list">Meus Super Heróis</string>
+    <string name="navigation_about">Sobre</string>
+
+    <string name="action_settings">Configurações</string>
+
+    <string name="title_activity_main">Super Heróis</string>
+    <string name="title_add">Vamos começar? Adicione um novo Super Herói</string>
+    <string name="title_brand">Super Marca, ex: Marvel...</string>
+    <string name="title_add_2">Adicionar</string>
+    <string name="title_super_name">Super Nome</string>
+    <string name="title_add_success">Super herói inserido com sucesso</string>
+    <string name="title_add_error">Preencha todos os campos</string>
+    <string name="app_by">Por Cauê Almeida</string>
+    <string name="app_by_url">www.cauealmeida.com</string>
+    <string name="app_version">Versão 1.0.0</string>
+</resources>
