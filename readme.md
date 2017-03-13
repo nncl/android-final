@@ -28,7 +28,7 @@ Após o login, o usuário no precisa entrar mais com nome de usuário e senha.
 
 ### Cadastro
 
-Para o app escolhi o tema de Super Heróis. Aqui queremos somente o nome do Super Herói e o brand de que foi criado.
+Para o app escolhi o tema de Super Heróis. Aqui queremos somente o nome do Super Herói e a empresa que o criou/comprou.
 
 ### Features
 
