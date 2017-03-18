@@ -65,20 +65,11 @@ public class SuperHeroListActivity extends AppCompatActivity {
 
     private void loadSuperHeroes() {
 
-        SuperHero hero;
 
-        for (int i = 0; i < 15; i++) {
-            hero = new SuperHero("Super " + i, "Mar" + i);
-            heroes.add(hero);
-        }
-
-        // List foi atualizada
-        mAdapter.notifyDataSetChanged();
-
-        /*
         Log.i("Info", "Vamos carregar os super heróis");
 
         try {
+            SuperHero hero;
             int i = 0;
             database = openOrCreateDatabase("users.db", Context.MODE_PRIVATE, null);
             cursor = database.rawQuery("SELECT * FROM TAB_HEROES", null);
@@ -87,10 +78,22 @@ public class SuperHeroListActivity extends AppCompatActivity {
 
             cursor.moveToFirst();
             i = cursor.getCount();
-            cursor.close();
+//            cursor.close();
 
             Log.i("Info", "Temos " + i + " heróis");
             // TODO Show on recycler view
+
+            for (cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
+                // do what you need with the cursor here
+                hero = new SuperHero(cursor.getString(1), cursor.getString(2));
+                heroes.add(hero);
+            }
+
+            // Lista atualizada
+            mAdapter.notifyDataSetChanged();
+
+            // Nunca esquecer de fechar o cursor
+            cursor.close();
 
         } catch (Exception e) {
             Log.e("Error", "Erro ao buscar usuário: " + e);
@@ -99,6 +102,5 @@ public class SuperHeroListActivity extends AppCompatActivity {
                     .show();
 
         }
-        */
     }
 }
