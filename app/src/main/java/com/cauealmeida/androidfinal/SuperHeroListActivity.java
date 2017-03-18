@@ -5,18 +5,56 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
+
+import com.cauealmeida.androidfinal.adapters.HeroesAdapter;
+import com.cauealmeida.androidfinal.listener.ClickListener;
+import com.cauealmeida.androidfinal.listener.PersonTouchListener;
+import com.cauealmeida.androidfinal.model.SuperHero;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SuperHeroListActivity extends AppCompatActivity {
 
     SQLiteDatabase database;
     Cursor cursor;
+    private RecyclerView recyclerView;
+    private List<SuperHero> heroes = new ArrayList<>();
+    private HeroesAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_super_hero_list);
+
+        recyclerView = (RecyclerView) findViewById(R.id.rvHeroes);
+        mAdapter = new HeroesAdapter(heroes);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
+
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+
+//        recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
+        recyclerView.setAdapter(mAdapter);
+
+        recyclerView.addOnItemTouchListener(new PersonTouchListener(getApplicationContext(), recyclerView, new ClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+                SuperHero hero = heroes.get(position);
+                Toast.makeText(getApplicationContext(), hero.getName(), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onLongClick(View view, int position) {
+                // TODO
+            }
+        }));
 
         loadSuperHeroes();
     }
@@ -26,6 +64,18 @@ public class SuperHeroListActivity extends AppCompatActivity {
      */
 
     private void loadSuperHeroes() {
+
+        SuperHero hero;
+
+        for (int i = 0; i < 15; i++) {
+            hero = new SuperHero("Super " + i, "Mar" + i);
+            heroes.add(hero);
+        }
+
+        // List foi atualizada
+        mAdapter.notifyDataSetChanged();
+
+        /*
         Log.i("Info", "Vamos carregar os super heróis");
 
         try {
@@ -49,5 +99,6 @@ public class SuperHeroListActivity extends AppCompatActivity {
                     .show();
 
         }
+        */
     }
 }
