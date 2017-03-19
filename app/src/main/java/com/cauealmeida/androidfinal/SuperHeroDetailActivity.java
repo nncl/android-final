@@ -50,6 +50,11 @@ public class SuperHeroDetailActivity extends AppCompatActivity {
         db.update("TAB_HEROES", cv, "ID = ?", new String[]{heroid});
 
         Toast.makeText(this, R.string.app_resp_success, Toast.LENGTH_SHORT).show();
+    }
 
+    @Override
+    public void onBackPressed() {
+        setResult(RESULT_CANCELED);
+        finish();
     }
 }

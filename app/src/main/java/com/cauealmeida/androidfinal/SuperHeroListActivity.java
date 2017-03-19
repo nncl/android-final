@@ -51,16 +51,30 @@ public class SuperHeroListActivity extends AppCompatActivity {
                 i.putExtra("brand", hero.getBrand());
                 i.putExtra("id", hero.getId());
 
-                startActivity(i);
+                // startActivity(i);
+                startActivityForResult(i, 0);
             }
 
             @Override
             public void onLongClick(View view, int position) {
-                // TODO
+                // ...
             }
         }));
 
         loadSuperHeroes();
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 0) {
+            if (resultCode == RESULT_CANCELED) {
+                heroes.clear();
+                loadSuperHeroes();
+                Log.i("BACK", "Usuário clicou no voltar");
+            }
+        }
     }
 
     /**
