@@ -28,4 +28,7 @@
     <string name="app_action_update">Atualizar</string>
     <string name="app_resp_success">Super Herói atualizado com sucesso</string>
     <string name="app_action_delete">Remover</string>
+    <string name="app_action_yes">Sim</string>
+    <string name="app_action_no">Não</string>
+    <string name="app_action_question">Você tem certeza?</string>
 </resources>

@@ -28,5 +28,8 @@
     <string name="app_action_update">Update</string>
     <string name="app_resp_success">Super Hero updated successfully</string>
     <string name="app_action_delete">Delete</string>
+    <string name="app_action_yes">Yeap</string>
+    <string name="app_action_no">Nope</string>
+    <string name="app_action_question">Are you sure?</string>
 
 </resources>

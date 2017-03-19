@@ -1,9 +1,11 @@
 package com.cauealmeida.androidfinal;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -45,7 +47,7 @@ public class SuperHeroListActivity extends AppCompatActivity {
 
         recyclerView.addOnItemTouchListener(new PersonTouchListener(getApplicationContext(), recyclerView, new ClickListener() {
             @Override
-            public void onClick(View view, int position) {
+            public void onClick(final View view, int position) {
                 final SuperHero hero = heroes.get(position);
 
                 view.findViewById(R.id.btnUpdate).setOnClickListener(new View.OnClickListener() {
@@ -66,13 +68,31 @@ public class SuperHeroListActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         Log.i("INFO", "DELETE " + String.valueOf(hero.getName()));
-                        DAO dao = new DAO(getApplicationContext());
 
-                        dao.delete(hero.getId());
-                        heroes.clear();
-                        loadSuperHeroes();
+                        AlertDialog.Builder alert = new AlertDialog.Builder(view.getContext(), R.style.AlertDialogTheme);
+                        alert.setTitle(R.string.app_name);
+                        alert.setMessage(R.string.app_action_question);
 
-                        // TODO Dialog
+                        alert.setPositiveButton(R.string.app_action_yes, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                DAO dao = new DAO(getApplicationContext());
+
+                                dao.delete(hero.getId());
+                                heroes.clear();
+                                loadSuperHeroes();
+                                dialog.dismiss();
+                            }
+                        });
+
+                        alert.setNegativeButton(R.string.app_action_no, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        });
+
+                        alert.show();
                     }
                 });
 
