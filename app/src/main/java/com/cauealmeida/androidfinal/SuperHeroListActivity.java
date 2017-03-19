@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.cauealmeida.androidfinal.adapters.HeroesAdapter;
+import com.cauealmeida.androidfinal.dao.DAO;
 import com.cauealmeida.androidfinal.listener.ClickListener;
 import com.cauealmeida.androidfinal.listener.PersonTouchListener;
 import com.cauealmeida.androidfinal.model.SuperHero;
@@ -26,7 +27,7 @@ public class SuperHeroListActivity extends AppCompatActivity {
     SQLiteDatabase database;
     Cursor cursor;
     private RecyclerView recyclerView;
-    private List<SuperHero> heroes = new ArrayList<>();
+    public List<SuperHero> heroes = new ArrayList<>();
     private HeroesAdapter mAdapter;
 
     @Override
@@ -45,14 +46,36 @@ public class SuperHeroListActivity extends AppCompatActivity {
         recyclerView.addOnItemTouchListener(new PersonTouchListener(getApplicationContext(), recyclerView, new ClickListener() {
             @Override
             public void onClick(View view, int position) {
-                SuperHero hero = heroes.get(position);
-                Intent i = new Intent(getApplicationContext(), SuperHeroDetailActivity.class);
-                i.putExtra("name", hero.getName());
-                i.putExtra("brand", hero.getBrand());
-                i.putExtra("id", hero.getId());
+                final SuperHero hero = heroes.get(position);
 
-                // startActivity(i);
-                startActivityForResult(i, 0);
+                view.findViewById(R.id.btnUpdate).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Log.i("INFO", "UPDATE " + String.valueOf(hero.getName()));
+
+                        Intent i = new Intent(v.getContext(), SuperHeroDetailActivity.class);
+                        i.putExtra("name", hero.getName());
+                        i.putExtra("brand", hero.getBrand());
+                        i.putExtra("id", hero.getId());
+
+                        startActivityForResult(i, 0);
+                    }
+                });
+
+                view.findViewById(R.id.btnDelete).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Log.i("INFO", "DELETE " + String.valueOf(hero.getName()));
+                        DAO dao = new DAO(getApplicationContext());
+
+                        dao.delete(hero.getId());
+                        heroes.clear();
+                        loadSuperHeroes();
+
+                        // TODO Dialog
+                    }
+                });
+
             }
 
             @Override
@@ -70,18 +93,23 @@ public class SuperHeroListActivity extends AppCompatActivity {
 
         if (requestCode == 0) {
             if (resultCode == RESULT_CANCELED) {
+                Log.i("BACK", "Usuário clicou no voltar");
                 heroes.clear();
                 loadSuperHeroes();
-                Log.i("BACK", "Usuário clicou no voltar");
             }
         }
+    }
+
+    public void cleanAll() {
+        heroes.clear();
+        loadSuperHeroes();
     }
 
     /**
      * Carrega os super heróis do banco
      */
 
-    private void loadSuperHeroes() {
+    public void loadSuperHeroes() {
 
 
         Log.i("Info", "Vamos carregar os super heróis");
@@ -115,7 +143,6 @@ public class SuperHeroListActivity extends AppCompatActivity {
 
             Toast.makeText(this, "Erro ao encontrar usuário", Toast.LENGTH_SHORT)
                     .show();
-
         }
     }
 }

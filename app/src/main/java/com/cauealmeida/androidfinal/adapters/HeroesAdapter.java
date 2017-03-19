@@ -31,9 +31,10 @@ public class HeroesAdapter extends RecyclerView.Adapter<HeroesAdapter.HeroViewHo
 
     @Override
     public void onBindViewHolder(HeroViewHolder holder, int position) {
-        SuperHero hero = heroes.get(position);
+        final SuperHero hero = heroes.get(position);
         holder.tName.setText(hero.getName());
         holder.tBrand.setText(hero.getBrand());
+
     }
 
     @Override
@@ -50,7 +51,6 @@ public class HeroesAdapter extends RecyclerView.Adapter<HeroesAdapter.HeroViewHo
             super(itemView);
             tName = (TextView) itemView.findViewById(R.id.tvName);
             tBrand = (TextView) itemView.findViewById(R.id.tvBrand);
-
         }
     }
 }

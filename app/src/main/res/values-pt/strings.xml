@@ -27,4 +27,5 @@
     <string name="app_version">Versão 1.0.0</string>
     <string name="app_action_update">Atualizar</string>
     <string name="app_resp_success">Super Herói atualizado com sucesso</string>
+    <string name="app_action_delete">Remover</string>
 </resources>

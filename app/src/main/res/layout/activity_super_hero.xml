@@ -52,5 +52,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/edtSuperBrand"
         android:layout_centerHorizontal="true"
-        android:id="@+id/btnSaveHero" />
+        android:id="@+id/btnSaveHero"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/colorAccent" />
 </RelativeLayout>

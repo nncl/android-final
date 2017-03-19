@@ -51,8 +51,6 @@ public class SuperHeroActivity extends AppCompatActivity {
 
     /**
      * Salva super herói no SQLite
-     *
-     * @param {SuperHero} superHero
      */
 
     private void storeSuperHero(SuperHero superHero) {

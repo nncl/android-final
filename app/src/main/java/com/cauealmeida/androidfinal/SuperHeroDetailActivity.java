@@ -43,6 +43,11 @@ public class SuperHeroDetailActivity extends AppCompatActivity {
         String herobrand = edtBrand.getText().toString();
         String heroid = heroId;
 
+        if (heroname.isEmpty() || herobrand.isEmpty()) {
+            Toast.makeText(v.getContext(), R.string.title_add_error, Toast.LENGTH_LONG).show();
+            return;
+        }
+
         ContentValues cv = new ContentValues();
         cv.put("NAME", heroname);
         cv.put("BRAND", herobrand);
