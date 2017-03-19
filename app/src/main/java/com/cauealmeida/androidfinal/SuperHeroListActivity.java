@@ -1,6 +1,7 @@
 package com.cauealmeida.androidfinal;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
@@ -39,15 +40,18 @@ public class SuperHeroListActivity extends AppCompatActivity {
 
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-
-//        recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
         recyclerView.setAdapter(mAdapter);
 
         recyclerView.addOnItemTouchListener(new PersonTouchListener(getApplicationContext(), recyclerView, new ClickListener() {
             @Override
             public void onClick(View view, int position) {
                 SuperHero hero = heroes.get(position);
-                Toast.makeText(getApplicationContext(), hero.getName(), Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(getApplicationContext(), SuperHeroDetailActivity.class);
+                i.putExtra("name", hero.getName());
+                i.putExtra("brand", hero.getBrand());
+                i.putExtra("id", hero.getId());
+
+                startActivity(i);
             }
 
             @Override
@@ -78,14 +82,11 @@ public class SuperHeroListActivity extends AppCompatActivity {
 
             cursor.moveToFirst();
             i = cursor.getCount();
-//            cursor.close();
 
             Log.i("Info", "Temos " + i + " heróis");
-            // TODO Show on recycler view
 
             for (cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
-                // do what you need with the cursor here
-                hero = new SuperHero(cursor.getString(1), cursor.getString(2));
+                hero = new SuperHero(cursor.getString(1), cursor.getString(2), cursor.getString(0));
                 heroes.add(hero);
             }
 

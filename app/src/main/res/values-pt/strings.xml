@@ -25,4 +25,6 @@
     <string name="app_by">Por Cauê Almeida</string>
     <string name="app_by_url">www.cauealmeida.com</string>
     <string name="app_version">Versão 1.0.0</string>
+    <string name="app_action_update">Atualizar</string>
+    <string name="app_resp_success">Super Herói atualizado com sucesso</string>
 </resources>

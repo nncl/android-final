@@ -31,7 +31,8 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".SuperHeroActivity" />
         <activity android:name=".SuperHeroListActivity" />
-        <activity android:name=".AboutActivity"></activity>
+        <activity android:name=".AboutActivity" />
+        <activity android:name=".SuperHeroDetailActivity"></activity>
     </application>
 
 </manifest>

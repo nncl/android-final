@@ -5,12 +5,27 @@ package com.cauealmeida.androidfinal.model;
  */
 
 public class SuperHero {
+    private String id;
     private String name;
     private String brand;
 
     public SuperHero(String name, String brand) {
         this.name = name;
         this.brand = brand;
+    }
+
+    public SuperHero(String name, String brand, String id) {
+        this.name = name;
+        this.brand = brand;
+        this.id = id;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
