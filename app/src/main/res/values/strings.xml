@@ -31,5 +31,6 @@
     <string name="app_action_yes">Yeap</string>
     <string name="app_action_no">Nope</string>
     <string name="app_action_question">Are you sure?</string>
+    <string name="app_resp_empty">Add a Super Hero</string>
 
 </resources>

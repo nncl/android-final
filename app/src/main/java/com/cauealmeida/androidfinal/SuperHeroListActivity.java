@@ -161,7 +161,7 @@ public class SuperHeroListActivity extends AppCompatActivity {
         } catch (Exception e) {
             Log.e("Error", "Erro ao buscar usuário: " + e);
 
-            Toast.makeText(this, "Erro ao encontrar usuário", Toast.LENGTH_SHORT)
+            Toast.makeText(this, R.string.app_resp_empty, Toast.LENGTH_SHORT)
                     .show();
         }
     }
