@@ -36,7 +36,7 @@ Para o app escolhi o tema de **Super Heróis**. Vamos cadastrar o nome do Super 
 - [x] Funcionalidade 2
 - [x] Funcionalidade 3
 - [x] Funcionalidade 4
-- [ ] Funcionalidade 5
+- [x] Funcionalidade 5
 - [x] Funcionalidade 6
 - [x] Funcionalidade 7
 - [x] Considerações
